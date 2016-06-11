@@ -1,7 +1,7 @@
 // http://noisehack.com/generate-noise-web-audio-api/ !
 
 var Noises = (function() {
-    var audioContext = new webkitAudioContext();
+    var audioContext = new (window.AudioContext || window.webkitAudioContext)(); 
 
     var masterVolume = audioContext.createGain();
     masterVolume.connect(audioContext.destination);
