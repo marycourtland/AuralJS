@@ -5,7 +5,7 @@ var Noises = (function() {
 
     var masterVolume = audioContext.createGain();
     masterVolume.connect(audioContext.destination);
-    masterVolume.gain.value = 1;
+    masterVolume.gain.value = 0.5; // don't hurt people's ears...
 
     function Noise(noiseFunction) {
         var bufferSize = 2 * audioContext.sampleRate,
@@ -90,6 +90,10 @@ var Noises = (function() {
         allOff: function() {
             for (var id in noises) { noises[id].setVolume(0); }
             return this;
+        },
+
+        masterVolume: function(volume) {
+            masterVolume.gain.value = volume;
         }
     }
 
