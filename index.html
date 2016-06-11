@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AuralJS</title>
+<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 120px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 200px;
+    }
+    #info {
+        position: absolute;
+        top: 320px;
+    }
+    #rules, #sounds {
+        width: 100%;
+        height: 300px;
+    }
+</style>
+</head>
+<body>
+<h2>Aural JS</h2>
+<h3>Auditory programming environment</h3>
+<div id="editor">var test = 'testing';</div>
+<div id="info">
+    <p>Try putting your cursor in various places in the variable declaration. Then, try typing some some stuff yourself. Adjust sound volume if needed.</p>
+    <p>Uses the <a href='http://nearley.js.org/'>NearleyJS</a> parser to hook sounds to Javascript grammar rules (similar to syntax highlighting). Proof of concept, very rough, not optimal, etc etc.</p>
+
+    <h3>Rule > Sound mapping</h3>
+    <input type='button' value='refresh' onclick="refreshFromDisplay(ruleDisplay, ruleSounds);"></input>
+    <textarea id='rules'></textarea>
+
+    <h3>Sound definitions (combination of noise types)</h3>
+    <input type='button' value='refresh' onclick="refreshFromDisplay(soundDisplay, noiseSets);"></input>
+    <textarea id='sounds'></textarea>
+</div>
+
+<!-- Sound -->
+<!-- <script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script> -->
+<script src="./noises.js"></script>
+
+<!-- Source editor -->
+<script src="./ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Parsing -->
+<script src="./nearley.js" type="text/javascript"></script>
+<script src="./javascript.js"></script>
+
+<script src="./aural.js" type="text/javascript"></script>
+</body>
+</html>
