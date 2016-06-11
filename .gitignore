@@ -1,0 +1,4 @@
+ace-builds/*
+!ace-builds/src-noconflict/ace.js
+!ace-builds/src-noconflict/mode-javascript.js
+!ace-builds/src-noconflict/theme-monokai.js

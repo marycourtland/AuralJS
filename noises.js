@@ -76,7 +76,6 @@ var Noises = (function() {
         // TODO: need to compensate for gain
 
         set: function(volumes) {
-            console.log('setting volumes:', volumes)
             if (!volumes) return this;
 
             for (var id in volumes) {

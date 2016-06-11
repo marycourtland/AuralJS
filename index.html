@@ -27,14 +27,20 @@
 <div id="editor">var test = 'testing';</div>
 <div id="info">
     <p>Try putting your cursor in various places in the variable declaration. Then, try typing some some stuff yourself. Adjust sound volume if needed.</p>
-    <p>Uses the <a href='http://nearley.js.org/'>NearleyJS</a> parser to hook sounds to Javascript grammar rules (similar to syntax highlighting). Proof of concept, very rough, not optimal, etc etc.</p>
+    <p>Uses the <a href='http://nearley.js.org/'>NearleyJS</a> parser to hook sounds to Javascript grammar rules (similar to syntax highlighting). ***Proof of concept, very rough, not optimal, etc etc.***</p>
 
     <h3>Rule > Sound mapping</h3>
-    <input type='button' value='refresh' onclick="refreshFromDisplay(ruleDisplay, ruleSounds);"></input>
+    <p>Grammar rules are considered in this order, so later ones will override earlier ones.
+        <a href="./javascript.js" target="_blank">Possible rule names can be found here</a>, and check the browser console for some useful info while typing.
+    </p>
+    <p>Sounds are played if any of these grammar rules are <b>allowed but not complete</b> (based on the code up to your cursor). This allows for a large set of rules to potentially trigger sounds at each point in the code. So, it's a good idea to specify that generic high-level rules (like 'Program') reset the sound state back to 'lowlevel' at the end of the list.</p>
+    <input type='button' value='refresh rule mappings' onclick="refreshFromDisplay(ruleDisplay, ruleSounds);"></input>
+    <small>* please use valid json :)</small>
     <textarea id='rules'></textarea>
 
     <h3>Sound definitions (combination of noise types)</h3>
-    <input type='button' value='refresh' onclick="refreshFromDisplay(soundDisplay, noiseSets);"></input>
+    <input type='button' value='refresh sound definitions' onclick="refreshFromDisplay(soundDisplay, noiseSets);"></input>
+    <small>* please use valid json :)</small>
     <textarea id='sounds'></textarea>
 </div>
 

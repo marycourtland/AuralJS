@@ -113,7 +113,7 @@ function auralParse(code) {
 
     var noiseSet = noiseSets.lowlevel; // default sound
 
-    console.log('\nRule sounds for: ' + code.replace(/\n/g, ' '));
+    console.log('\nAllowed but incomplete rules for: `' + code.replace(/\n/g, ' ') + '`');
     console.log(rulesWithSounds);
 
     // Go in order of this list of rules, to preserve priority
