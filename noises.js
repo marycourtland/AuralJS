@@ -23,16 +23,53 @@ var Noises = (function() {
         // ok let's dress this up a bit
         this.noise = noise;
 
-        var volumeNode = audioContext.createGain();
-        volumeNode.connect(masterVolume);
-        volumeNode.gain.value = 1;
+        var volumeNode = VolumeNode();
         this.noise.connect(volumeNode);
 
         this.start = function() { this.noise.start(0); return this; }
         this.setVolume = function(level) { volumeNode.gain.value = level; return this; }
     }
 
+    function Oscillator(freq) {
+        var oscillator = audioContext.createOscillator();
+        var volumeNode = VolumeNode();
+        oscillator.connect(volumeNode);
+
+        // 'sine' is pretty safe
+        // 'square' is okay, but harsh
+        // 'triangle' is quite harsh, but effective when very low volume, and high volume noise
+        oscillator.type = 'triangle';
+        oscillator.frequency.value = freq;
+
+        this.start = function() { oscillator.start(); return this; }
+        this.setVolume = function(level) { volumeNode.gain.value = level; return this; }
+    }
+
+    function VolumeNode() {
+        var volumeNode = audioContext.createGain();
+        volumeNode.connect(masterVolume);
+        volumeNode.gain.value = 1;
+        return volumeNode;
+    }
+
     var noises = {
+        "A3": new Oscillator(220.00),
+        "A#3": new Oscillator(233.08),
+        "B3": new Oscillator(246.94),
+        "C4":  new Oscillator(261.63),
+        "C#4": new Oscillator(277.18),
+        "D4":  new Oscillator(293.66),
+        "D#4": new Oscillator(311.13),
+        "E4":  new Oscillator(329.63),
+        "F4":  new Oscillator(349.23),
+        "F#4": new Oscillator(369.99),
+        "G4":  new Oscillator(392.00),
+        "G#4": new Oscillator(415.30),
+        "A4":  new Oscillator(440.00),
+        "A#4": new Oscillator(466.16),
+        "B4":  new Oscillator(493.88),
+        "C5":  new Oscillator(523.25),
+
         white: new Noise(function() { return Math.random() * 2 - 1; }),
 
         pink: (function() {

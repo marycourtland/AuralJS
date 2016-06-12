@@ -15,7 +15,7 @@
         position: absolute;
         top: 320px;
     }
-    #rules, #sounds {
+    #rules1, #rules2, #sounds {
         width: 100%;
         height: 300px;
     }
@@ -34,9 +34,13 @@
         <a href="./javascript.js" target="_blank">Possible rule names can be found here</a>, and check the browser console for some useful info while typing.
     </p>
     <p>Sounds are played if any of these grammar rules are <b>allowed but not complete</b> (based on the code up to your cursor). This allows for a large set of rules to potentially trigger sounds at each point in the code. So, it's a good idea to specify that generic high-level rules (like 'Program') reset the sound state back to 'lowlevel' at the end of the list.</p>
-    <input type='button' value='refresh rule mappings' onclick="refreshFromDisplay(ruleDisplay, ruleSounds);"></input>
+    <input type='button' value='refresh rule mappings (level 1)' onclick="refreshFromDisplay(ruleDisplay1, ruleSoundsLevel1);"></input>
     <small>* please use valid json :)</small>
-    <textarea id='rules'></textarea>
+    <textarea id='rules1'></textarea>
+
+    <input type='button' value='refresh rule mappings (level 2)' onclick="refreshFromDisplay(ruleDisplay2, ruleSoundsLevel2);"></input>
+    <small>* please use valid json :)</small>
+    <textarea id='rules2'></textarea>
 
     <h3>Sound definitions (combination of noise types)</h3>
     <input type='button' value='refresh sound definitions' onclick="refreshFromDisplay(soundDisplay, noiseSets);"></input>
